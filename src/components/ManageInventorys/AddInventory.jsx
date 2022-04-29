@@ -4,17 +4,19 @@ import "./AddInventory.css";
 import { Link } from "react-router-dom";
 
 const AddInventory = () => {
-  const ManageInventory = (event) =>{
+  const inputUser = (event) =>{
 
 event.preventDefault();
 const title =event.target.title.value;
 const description =event.target.description.value;
-const date =event.target.date.value;
+const price =event.target.price.value;
+const email =event.target.email.value;
 const banner =event.target.banner.value;
-const userInventory = {title, description, date, banner};
+const userInventory = {title, description, price, email, banner};
+console.log(userInventory)
 
 
-fetch('http://localhost:4000/addevent',{
+fetch('http://localhost:5000/add-inventory',{
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -35,7 +37,7 @@ body: JSON.stringify(userInventory)
   return (
     <div className="w-screen ">
       <div className="w-full grid grid-cols-4 lg:px-24 ">
-        <div>
+        <div className="border ">
           <div className="flex flex-col font-semibold  mt-8">
             <Link
               to="/manage-inventory"
@@ -50,8 +52,8 @@ body: JSON.stringify(userInventory)
             </Link>
           </div>
         </div>
-        <div className="  col-span-3 bg-[#F4F7FC]">
-          <form onSubmit={ManageInventory}>
+        <div className="  col-span-3 bg-[#F4F7FC] ">
+          <form onSubmit={inputUser}>
           <div className=" px-8  mt-8 w-full h-[100vh]">
             <div className="bg-white grid grid-cols-2 rounded px-8 py-7  gap-10">
               <div className="flex flex-col">
@@ -72,11 +74,19 @@ body: JSON.stringify(userInventory)
                 ></textarea>
               </div>
               <div className="flex flex-col">
-                <label>Event Date</label>
+                <label>E-mail</label>
                 <input
                   className="border mt-2 rounded font-semibold px-3 py-1 focus:outline-0"
-                  type="date"
-                  name="date" required
+                  type="email"
+                  name="email" required
+                  id=""
+                  placeholder="email"
+                />
+                <label>Price</label>
+                <input
+                  className="border mt-2 rounded font-semibold px-3 py-1 focus:outline-0"
+                  type="text"
+                  name="price" required
                   id=""
                 />
                 <label className="pt-5">Banner</label>
@@ -90,9 +100,9 @@ body: JSON.stringify(userInventory)
 
             <button
               type="submit"
-              className="bg-primary-100 py-2  px-8 absolute right-28 text-white mt-4 rounded hover:bg-sky-500"
+              className="bg-blue-700 py-2  px-8 absolute right-28 text-white mt-4 rounded hover:bg-blue-800 "
             >
-              Submit{" "}
+          Submit
             </button>
           </div>
 </form>

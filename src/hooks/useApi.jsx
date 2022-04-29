@@ -7,7 +7,7 @@ const [inventorys, setInventorys] = useState([])
 
 useEffect(()=>{
  
-    fetch("inventory.json")
+    fetch("http://localhost:5000/add-inventory")
     .then(res => res.json())
     .then(data => setInventorys(data))
 
