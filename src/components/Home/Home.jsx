@@ -42,7 +42,7 @@ const Home = () => {
           </div>
           <div className=" flex  items-center justify-center w-full ">
             <input
-              className="mt-4 mb-8 icon bg-white/70 text-white border border-gray-400 py-1 w-[80%] md:w-[80%] lg:w-[50%] rounded focus:outline-none px-2"
+              className="mt-4 mb-8 search bg-white/70 text-white border border-gray-400 py-1 w-[80%] md:w-[80%] lg:w-[50%] rounded focus:outline-none px-2"
               type="text"
               placeholder="search inventory.."
             />
