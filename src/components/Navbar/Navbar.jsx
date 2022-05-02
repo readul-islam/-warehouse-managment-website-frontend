@@ -1,12 +1,16 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Navber = () => {
+
   const [nav, setNav] = useState(false);
   const [user, setUser] = useState(false);
   const [currentuser] = useAuthState(auth);
+console.log(currentuser)
+console.log(user)
 
   return (
     <>
@@ -20,14 +24,14 @@ const Navber = () => {
           </p>
           <div className= "flex items-center md:order-2">
             <div>
-            <Link to='/register' type="submit" className="text-white bg-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</Link>
+          {  currentuser ? '' : <Link to='/register' type="submit" className="text-white bg-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</Link>}
            
             </div>
          { currentuser ?  <button
-              onClick={() => {
-                setUser(!user);
-              }}
+         onClick={()=>{ setUser(!user);setNav(false)}}
+              
               type="button"
+             
               className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               id="user-menu-button"
               aria-expanded="false"
@@ -36,7 +40,7 @@ const Navber = () => {
               <span className="sr-only">Open user menu</span>
               <img
                 className="w-8 h-8 rounded-full"
-                src="https://i.ibb.co/pdHFmqj/babySit.png"
+                src={!currentuser.photoURL ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' : currentuser.photoURL}
                 alt=""
               />
             </button> : ''
@@ -44,56 +48,57 @@ const Navber = () => {
             <div
               className={
                 user
-                  ? "block absolute top-10 right-0  z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                  ? `block absolute top-10 right-0  z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`
                   : "hidden   z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 "
               }
               id="dropdown"
             >
               <div className="py-3 px-4">
                 <span className="block text-sm text-gray-900 dark:text-white">
-                  Bonnie Green
+                 {currentuser?.displayname ? currentuser.displayname : 'Name Unavailable'}
                 </span>
                 <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
-                  name@flowbite.com
+                {currentuser?.email ? currentuser.email : 'Email Unavailable'}
                 </span>
               </div>
               <ul className="py-1" aria-labelledby="dropdown">
                 <li>
                   <p
-                    href="#"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  
+                    className="block  cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Dashboard
                   </p>
                 </li>
                 <li>
                   <p
-                    href="#"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                 
+                    className="block py-2  cursor-pointer px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Settings
                   </p>
                 </li>
                 <li>
                   <p
-                    href="#"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                   
+                    className="block py-2 px-4  cursor-pointer text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Earnings
                   </p>
                 </li>
                 <li>
-                  <p
-                    href="#"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  <Link to="/login"
+                   onClick={() =>{signOut(auth); setUser(false)}}
+                    className="block py-2 px-4 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Sign out
-                  </p>
+                  </Link>
                 </li>
               </ul>
             </div>
             <button
-              onClick={() => setNav(!nav)}
+           
+              onClick={() => {setNav(!nav);setUser(false) }}
               data-collapse-toggle="mobile-menu-2"
               type="button"
               className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -170,7 +175,7 @@ const Navber = () => {
               </li>
               <li>
                 <p
-                  href="#"
+                 
                   className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Contact

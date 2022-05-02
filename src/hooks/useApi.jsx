@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const useApi = () => {
   const [isReload, setIsReload] = useState(false);
   
+  
   const [inventorys, setInventorys] = useState([]);
     //load all product from server
   useEffect(() => {
@@ -58,13 +59,17 @@ const useApi = () => {
     
   
   }
+  
 
-
+// console.log(quan)
 
   return {
     inventorys,
     deleteHandler,
-    searchHandler
+    searchHandler,
+   
+   
+   
   };
 };
 

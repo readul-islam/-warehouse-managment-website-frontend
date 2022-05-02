@@ -1,13 +1,18 @@
 
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useParams } from "react-router-dom";
+
 
 
 
 
 const InventoryDetails = () => {
   const [selected , setSelected] = useState({})
+  const [quan , setQuan] = useState(0)
+  const [isLoading , setIsLoading] = useState(false)
   const { id } = useParams();
+  
  
   useEffect(() => {
 
@@ -21,9 +26,39 @@ const InventoryDetails = () => {
     })
 
 
-  },[id])
+  },[id,isLoading])
+  const updateQuan = (add, deleted) => {
+    fetch(`http://localhost:5000/add-inventory/${id}?add=${add}&deleted=${deleted}`,{
+      method: 'PUT',
+     
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.error){
+
+        return toast.error(data.error,{id:1})
+      }
+    })
+  }
+  const quantity =(event) =>{
+    const quan =  event.target.value;
+    if(quan){
+      setQuan(quan )
+    }
+   
+   
+  }
+  const addQuantity = ()=>{
+    updateQuan(quan,0)
+    setIsLoading(!isLoading)
+  
+  }
   
   
+  const deleteQuantity = ()=>{
+    updateQuan(0,quan)
+    setIsLoading(!isLoading)
+  }
   
 
   return (
@@ -36,16 +71,16 @@ const InventoryDetails = () => {
              
               className="flex items-center "
             > 
-          <input
+          <input onBlur={quantity}
                   className="border rounded px-3 py-1 mt-2 focus:outline-0"
-                  type="text" name="title"
+                  type="text" name="quantity"
                   placeholder="add" required
                 />
             
              
             </div>
             <p  className="flex items-center space-x-2 mt-7">
-            <button
+            <button onClick={addQuantity}
               type="submit"
               className="text-white  bg-blue-700 hover:bg-blue-800  font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
@@ -53,6 +88,7 @@ const InventoryDetails = () => {
             </button>
             
             <button
+            onClick={deleteQuantity}
               type="submit"
               className="text-white  bg-blue-700 hover:bg-blue-800  font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
@@ -70,6 +106,7 @@ const InventoryDetails = () => {
     <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={selected.banner} alt=""/>
     <div className="flex flex-col justify-between p-4 leading-normal">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{selected.title}</h5>
+        <p>quantity: {selected.quantity}</p>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{selected.description}</p>
     </div>
 </a>
