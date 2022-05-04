@@ -20,7 +20,7 @@ const InventoryDetails = () => {
     .then(res => res.json())
     .then(data => {
       setSelected(data)
-      console.log(data)
+     
      
       
     })
@@ -79,7 +79,7 @@ const InventoryDetails = () => {
             
              
             </div>
-            <p  className="flex items-center space-x-2 mt-7">
+            <div  className="flex items-center space-x-2 mt-7">
             <button onClick={addQuantity}
               type="submit"
               className="text-white  bg-blue-700 hover:bg-blue-800  font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -95,21 +95,21 @@ const InventoryDetails = () => {
              Delivered
             </button>
            
-            </p>
+            </div>
           </div>
         </div>
         <div className="  col-span-3 bg-[#F4F7FC]">
         <div className=" px-8  mt-8 w-full h-[88vh]">
 
 
-        <a href="/" className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={selected.banner} alt=""/>
-    <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{selected.title}</h5>
-        <p>quantity: {selected.quantity}</p>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{selected.description}</p>
-    </div>
-</a>
+        <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+          <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={selected.banner} alt=""/>
+          <div className="flex flex-col justify-between p-4 leading-normal">
+              <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{selected.title}</div>
+              <div>quantity: {selected.quantity}</div>
+              <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">{selected.description}</div>
+          </div>
+        </div>
 
 
             <Link to='/manage-inventory'

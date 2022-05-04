@@ -13,7 +13,7 @@ const price =event.target.price.value;
 const email =event.target.email.value;
 const banner =event.target.banner.value;
 const userInventory = {title, description, price, email, banner};
-console.log(userInventory)
+
 
 
 fetch('http://localhost:5000/add-inventory',{

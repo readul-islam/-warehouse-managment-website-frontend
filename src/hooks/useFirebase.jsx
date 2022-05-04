@@ -1,6 +1,7 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -8,16 +9,17 @@ import {
 import { useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 
+
 const useFirebase = () => {
   let navigate = useNavigate();
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [user] = useAuthState(auth);
+  const [createUserWithEmailAndPassword, newUser, newUserLoading] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  const [signInWithEmailAndPassword, signInUser, signInLoading, signInError] =
-    useSignInWithEmailAndPassword(auth);
-  const [signInWithGoogle, googleUser, googleLoading, googleError] =
-    useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, loginUser, loginLoding, signInError] =
+useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
 
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -29,13 +31,40 @@ const useFirebase = () => {
     passwordError: "",
     repeatPasswordError: "",
   });
+// get all itmes securly
+  const jwtToken =() => {
+    
+    if (user) {
+     fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: user.email }),
+      })
+       .then((res) => res.json())
+     .then((data) => {
+          const token = data.token;
+         
+          localStorage.setItem("AccessToken", token);
+        });
+    }
+  };
+  jwtToken();
+ 
+ 
+  if (newUserLoading) {
+    <p>loadin...</p>;
+  }
 
   //create a new user with email & password
   const createNewUser = (event) => {
     event.preventDefault();
-
     createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-    navigate("/home");
+    if (newUser) {
+      jwtToken();
+      navigate("/home");
+    }
   };
 
   const logInUser = (event) => {
@@ -47,7 +76,6 @@ const useFirebase = () => {
       });
     }
   };
-
   const signInGoogle = () => {
     signInWithGoogle();
   };

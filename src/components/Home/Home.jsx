@@ -3,6 +3,9 @@ import "./Home.css";
 import car from "../../assets/img/header-img.png";
 import Typed from "react-typed";
 import Inventory from "./Inventory";
+import Footer from "../Footer/Footer";
+import Pricing from "../Pricing/Pricing";
+import AboutWarehouse from "../AboutWareHouse/AboutWareHouse";
 
 const Home = () => {
   return (
@@ -10,9 +13,9 @@ const Home = () => {
       <div className=" header-section w-full  ">
         <div className="overflow-hidden grid-cols-1 grid md:grid-cols-2  items-center  relative h-48 text-white  lg:px-28 md:px-20 rounded-lg gap-2 sm:h-64 xl:h-80 2xl:h-96">
           <div className="py-6 space-y-8">
-            <p className="text-4xl font-semibold upercase font-[Lato]">
-              <p className="uppercase"> dream</p>
-              <p>
+            <div className="text-4xl font-semibold upercase font-[Lato]">
+              <div className="uppercase"> dream</div>
+              <div>
                 {" "}
                 <Typed
                   strings={["Here you can find anycar!"]}
@@ -20,8 +23,8 @@ const Home = () => {
                   backSpeed={50}
                   loop
                 />{" "}
-              </p>
-            </p>
+              </div>
+            </div>
 
             <button
               type="submit"
@@ -37,8 +40,8 @@ const Home = () => {
 
         <div className=" bg-black/50  w-full md:px-20 lg:px-32 ">
           <div className=" text-white flex flex-col justify-center  items-center">
-            <p className="mt-1">120+ Brands And Vehicle Types. </p>
-            <p>Lets Find You A Car.</p>
+            <div className="mt-1">120+ Brands And Vehicle Types. </div>
+            <div>Lets Find You A Car.</div>
           </div>
           <div className=" flex  items-center justify-center w-full ">
             <input
@@ -49,10 +52,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+ <AboutWarehouse/>
       <section className="inventory-section">
         <Inventory></Inventory>
       </section>
+      <Pricing/>
+      <Footer/>
     </div>
   );
 };

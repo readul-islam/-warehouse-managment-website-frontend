@@ -48,7 +48,7 @@ const useApi = () => {
       .then(res => res.json())
       .then(data => {
       
-          console.log(data)
+          
           setInventorys(data)
           setIsReload(!isReload)
       
@@ -61,7 +61,7 @@ const useApi = () => {
   }
   
 
-// console.log(quan)
+
 
   return {
     inventorys,
