@@ -18,7 +18,7 @@ const Login = () => {
     return (
         <>
             
-        <div className="flex justify-center mt-10 ">
+        <div className="flex justify-center mt-24 md:mt-28 lg:mt-52 ">
           <form onSubmit={logInUser} className="lg:w-[60%] xl:w-[30%] md:w-[70%] w-[90%] border-2 px-4 py-10 rounded">
           <div className="mb-6">
 

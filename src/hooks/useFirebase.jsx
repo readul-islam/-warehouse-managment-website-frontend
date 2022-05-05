@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import ClipLoader from "react-spinners/ClipLoader";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
@@ -20,6 +21,7 @@ const useFirebase = () => {
   const [signInWithEmailAndPassword, loginUser, loginLoding, signInError] =
 useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
+  
 
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -51,6 +53,12 @@ useSignInWithEmailAndPassword(auth);
     }
   };
   jwtToken();
+  if(loginLoding){
+
+    return <>
+     <p className="text-4xl">Loading.....</p>
+    </>
+  }
  
  
   if (newUserLoading) {

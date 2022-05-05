@@ -4,17 +4,13 @@ import "./ManageInventory.css";
 import { Link } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 
-
 const ManageInventory = () => {
-  
-  const { inventorys, deleteHandler, searchHandler } = useApi();
-  
-  
+  const { inventorys, deleteHandler,searchHandler } = useApi();
   return (
-    <div className="w-screen ">
-      <div className="w-full grid grid-cols-4 lg:px-24 ">
+    <div className="border mt-20 md:mt-14">
+      <div className="w-full grid md:grid-cols-4 grid-cols-1 lg:px-24 ">
         <div>
-          <div className="flex flex-col font-semibold  mt-8">
+          <div className="flex flex-col font-semibold ml-4 my-4 md:mt-8">
             <Link
               to="/manage-inventory"
               className="flex items-center space-x-2"
@@ -31,13 +27,12 @@ const ManageInventory = () => {
             </Link>
           </div>
         </div>
-        <div className="  col-span-3 bg-[#F4F7FC]">
-          <div className=" px-8  mt-8 w-full h-[88vh]">
-            <div className="grid grid-cols-1 gap-4">
-              {/* ---------------------------------------- */}
+        <div className="col-span-3 bg-[#F4F7FC]">
+          <div className="px-8 mt-8 w-full h-[100vh]">
 
-              <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <div className="p-4">
+
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="p-4">
                   <label htmlFor="table-search" className="sr-only">
                     Search
                   </label>
@@ -64,28 +59,30 @@ const ManageInventory = () => {
                     />
                   </div>
                 </div>
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                  <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                      <th scope="col" className="p-4"></th>
-                      <th scope="col" className="px-6 py-3">
-                        Product name
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Color
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Category
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Price
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        <span className="sr-only">Edit</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
+              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" className="p-4">
+                      Checkbox
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Product name
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Color
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Category
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Price
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      <span className="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
                     {inventorys.map((inventory) => (
                       <tr
                         key={inventory._id}
@@ -118,7 +115,7 @@ const ManageInventory = () => {
                         <td className="px-6 py-4 text-right">
                           <p
                             onClick={() => deleteHandler(inventory._id)}
-                            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                            className="font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline"
                           >
                             Delete
                           </p>
@@ -126,11 +123,12 @@ const ManageInventory = () => {
                       </tr>
                     ))}
                   </tbody>
-                </table>
-              </div>
-
-              {/* ---------------------------------------- */}
+              </table>
             </div>
+
+
+
+
           </div>
         </div>
       </div>

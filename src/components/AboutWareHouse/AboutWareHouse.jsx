@@ -1,5 +1,5 @@
 import React from 'react';
-import aboutimg from '../../assets/img/grey-silver-color-sport-car.jpg';
+import car from '../../assets/img/car.jpg';
 import { FaCar } from "react-icons/fa";
 import { BsPersonFill } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
@@ -17,7 +17,7 @@ const AboutWarehouse = () => {
         
 
                 <div className='md:h-[450px] md:w-[50%] flex items-center justify-center'>
-                    <img className="object-cover w-full rounded-t-lg h-full md:w-full md:rounded-none md:rounded-l-lg" src={aboutimg} alt="" />
+                    <img className="object-cover w-full rounded-t-lg h-full md:w-full md:rounded-none md:rounded-l-lg" src={car} alt="" />
                 </div>
 
 
