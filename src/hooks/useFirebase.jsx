@@ -13,6 +13,7 @@ import auth from "../firebase.init";
 
 const useFirebase = () => {
   let navigate = useNavigate();
+  const [token, setToken] = useState('')
 
   const [user] = useAuthState(auth);
   const [createUserWithEmailAndPassword, newUser, newUserLoading] =
@@ -69,10 +70,12 @@ useSignInWithEmailAndPassword(auth);
   const createNewUser = (event) => {
     event.preventDefault();
     createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-    if (newUser) {
-      jwtToken();
-      navigate("/home");
-    }
+    
+      
+      if(token){
+        navigate("/home");
+      }
+    
   };
 
   const logInUser = (event) => {

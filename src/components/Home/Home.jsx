@@ -11,7 +11,7 @@ import AboutWareHouse from "../AboutWareHouse/AboutWareHouse"
 const Home = () => {
   return (
     <>
-      <div className="header-section w-full mt-[65px] md:mt-[65px] lg:mt-[65px]">
+      <div className="header-section w-full pt-[65px] md:pt-[65px] lg:pt-[65px]">
         <div className="overflow-hidden grid-cols-1 grid md:grid-cols-2  items-center  relative h-48 text-white  lg:px-28 md:px-20 rounded-lg gap-2 sm:h-64 xl:h-80 2xl:h-96">
           <div className="py-5 pl-6 md:pl-0 space-y-8">
             <p className="text-4xl font-semibold upercase font-[Lato]">
