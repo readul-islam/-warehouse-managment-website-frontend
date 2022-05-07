@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link} from "react-router-dom";
 import auth from "../../firebase.init";
 import logo from "../../assets/img/logo .png"
-import { GridLoader } from "react-spinners";
+
 
 const Navber = () => {
   
@@ -19,10 +19,10 @@ const Navber = () => {
     <>
       <nav className="bg-gray-700 sticky text-white top-0 z-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800  w-full  ">
         <div className="container flex  flex-wrap justify-between items-center mx-auto">
-          <div className="flex items-center">
-            <img src={logo} className="mr-3 h-6 sm:h-9 w-[80%]" alt="" />
+          <Link to='/' className="flex items-center">
+            <img src={logo} className="mr-3 h-6 sm:h-9 " alt="" />
             
-          </div>
+          </Link>
           <div className= "flex items-center md:order-2">
             <div>
           {  currentuser ? '' : <Link to='/register' type="submit" className="text-white bg-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</Link>}
@@ -184,6 +184,15 @@ const Navber = () => {
                   Blogs
                 </Link>
               </li>
+             { currentuser ? '':  <li>
+              <Link
+                 to='/contact'
+                  className={`block py-2 pr-4 pl-3 text-white bg-blue-700 rounded bg-transparent  hover:text-red-400 md:div-0 dark:text-white`}
+                  aria-current="page"
+                >
+                Contact Us
+                </Link>
+              </li>}
             </ul>
           </div>
         </div>
