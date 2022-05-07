@@ -90,13 +90,14 @@ useSignInWithEmailAndPassword(auth);
   const createNewUser = (event) => {
     event.preventDefault();
     if(userInfo.password === userInfo.repeatPassword){
-      console.log(userInfo.repeatPassword)
      
       createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     
-      navigate("/home");
+      navigate("/login");
     
       toast.success('Register successfully',{id:1})
+    }else{
+      toast.error('worng information',{id:1})
     }
    
   
