@@ -10,7 +10,7 @@ const Register = () => {
     return (
         <>
             
-        <div className="flex justify-center mt-24 md:mt-28 lg:mt-52 ">
+        <div className="flex justify-center mt-6 md:mt-20  ">
         <form onSubmit={createNewUser} className="lg:w-[60%] xl:w-[30%] md:w-[70%] w-[90%] border-2 px-4 py-10 rounded">
         <div className="mb-4">
         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
