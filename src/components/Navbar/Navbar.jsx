@@ -184,15 +184,6 @@ const Navber = () => {
                   Blogs
                 </Link>
               </li>
-              <li>
-              <Link
-                 to='/blogs'
-                  className={`block py-2 pr-4 pl-3 text-white bg-blue-700 rounded bg-transparent  hover:text-red-400 md:div-0 dark:text-white`}
-                  aria-current="page"
-                >
-                 Contact Us
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

@@ -89,11 +89,15 @@ useSignInWithEmailAndPassword(auth);
   //create a new user with email & password
   const createNewUser = (event) => {
     event.preventDefault();
-    createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+    if(userInfo.password === userInfo.repeatPassword){
+      console.log(userInfo.repeatPassword)
+     
+      createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     
       navigate("/home");
     
       toast.success('Register successfully',{id:1})
+    }
    
   
     
@@ -151,8 +155,8 @@ useSignInWithEmailAndPassword(auth);
 
   const getRepeatPassword = (event) => {
     const rePassword = event.target.value;
-
-    if (userInfo.password === rePassword) {
+    if ( rePassword === userInfo.password) {
+     
       setUserInfo({ ...userInfo, repeatPassword: rePassword });
       setErrors({ ...errors, repeatPasswordError: "" });
     } else {
@@ -173,9 +177,11 @@ if(email){
     },
   },
   );
-}else{
-  toast.error('please enter your email')
 }
+ if(sending){
+  toast.error('please enter your email',{id:1})
+ }
+
 
   }
 

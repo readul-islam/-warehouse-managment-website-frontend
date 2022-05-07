@@ -8,27 +8,27 @@ const ManageInventory = () => {
   const { inventorys, deleteHandler,searchHandler } = useApi();
   return (
     <div className="">
-      <div className="md:gap-28 grid md:grid-cols-4 grid-cols-1">
-        <div className='w-[420px]'>
-          <div className=" flex flex-col font-semibold ml-4 my-4 md:mt-8">
+      <div className="w-full grid md:grid-cols-4 grid-cols-1 lg:px-24 ">
+        <div>
+          <div className="flex flex-col font-semibold ml-4 my-4 md:mt-8">
             <Link
               to="/manage-inventory"
               className="flex items-center space-x-2"
             >
               <img className="w-5" src={user} alt="" />
-              <div>Manage Inventory</div>
+              <p>Manage Inventory</p>
             </Link>
             <Link
               to="/add-inventory"
               className="flex items-center space-x-2 mt-7"
             >
               <img className="w-5" src={plus} alt="" />
-              <div>Add New Items</div>
+              <p>Add New Items</p>
             </Link>
           </div>
         </div>
         <div className="col-span-3 bg-[#F4F7FC]">
-          <div className="px-8 mt-8 w-full h-[100vh]">
+          <div className="px-4 md:px-8 mt-8 w-full h-[100vh]">
 
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -51,7 +51,7 @@ const ManageInventory = () => {
                         ></path>
                       </svg>
                     </div>
-                    <input onChange={(e)=>searchHandler(e)}
+                    <input onKeyPress={(e)=>searchHandler(e)}
                       type="text"
                       id="table-search"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

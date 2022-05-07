@@ -46,15 +46,7 @@ const updateQuan = (add, deleted) => {
     
     
   }
-  // const inputHandler =(event) =>{
-  //   const inputQuan =  event.target.value;
-  //   if(inputQuan){
-  //     setQuan(inputQuan )
-  //     setQuantity(inputQuan)
-  //   }
-  // }
-
-//conceptul session asking
+  
   const addQuantity = (event)=>{
     event.preventDefault();
     const addValue = event.target.quan.value
