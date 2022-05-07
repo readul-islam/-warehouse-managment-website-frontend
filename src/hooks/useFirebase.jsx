@@ -9,13 +9,14 @@ import {
 } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
+import { GridLoader } from "react-spinners";
 
 
 const useFirebase = () => {
   let navigate = useNavigate();
   const [token, setToken] = useState('')
 
-  const [user] = useAuthState(auth);
+  const [user,userLoading] = useAuthState(auth);
   const [createUserWithEmailAndPassword, newUser, newUserLoading,newUserError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
@@ -36,6 +37,10 @@ useSignInWithEmailAndPassword(auth);
   });
 // get all itmes securly
   const jwtToken =() => {
+    if(userLoading){
+       return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/>
+      </div>
+    }
     
     if (user) {
      fetch("http://localhost:5000/login", {
@@ -48,43 +53,33 @@ useSignInWithEmailAndPassword(auth);
        .then((res) => res.json())
      .then((data) => {
           const accessToken = data.token;
+          console.log(data)
+          
+          localStorage.setItem("AccessToken", accessToken);
           setToken(accessToken)
-         
-          localStorage.setItem("AccessToken", token);
         });
     }
   };
   jwtToken();
- 
   if(loginUser){
-
-    toast.success('Login success',{id:1})
+    toast.success('Login successfully',{id: 1})
+  }
+  if(newUser){
+    toast.success('Register successfully',{id:1})
+  }
+  if(googleUser){
+    toast.success('Login successfully',{id:1})
+  }
+ 
+  if(newUserLoading){
+    return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/></div>
   }
   if(loginLoding){
-
-    return <p className="text-4xl">Loading.....</p>
-   
+    return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/></div>
   }
-  if (loginError) {
-    toast.error("We cannot find an account with that email address", {
-      id: 1,
-    });
+  if(googleLoading){
+    return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/></div>
   }
- 
- 
-  if (newUserLoading) {
-    return <p className="text-4xl pt-28">Loading.....</p>;
-  }
-  if(newUserError){
-    toast.error('your information error',{id:1})
-   }
-  if(googleUser){
-    toast.success('Login success',{id:1})
-  }
-  if(googleError){
-    toast.error('User Action Error',{id:1})
-  }
- 
 
 
   //create a new user with email & password
@@ -103,10 +98,16 @@ useSignInWithEmailAndPassword(auth);
   const logInUser = (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(userInfo.email, userInfo.password);
+    if(token){
+      navigate("/home")
+    }
     
   };
   const signInGoogle = () => {
     signInWithGoogle();
+    if(token){
+      navigate("/home")
+    }
    
   };
 

@@ -4,12 +4,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link} from "react-router-dom";
 import auth from "../../firebase.init";
 import logo from "../../assets/img/logo .png"
+import { GridLoader } from "react-spinners";
 
 const Navber = () => {
-
+  
   const [nav, setNav] = useState(false);
   const [user, setUser] = useState(false);
   const [currentuser] = useAuthState(auth);
+  
 
 
   return (

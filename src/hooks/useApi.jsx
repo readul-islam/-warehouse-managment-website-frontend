@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const useApi = () => {
   const [isReload, setIsReload] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
   
   
   const [inventorys, setInventorys] = useState([]);
@@ -34,9 +35,10 @@ const useApi = () => {
             console.log(err)
           }
           setIsReload(!isReload);
+          setIsDelete(!isDelete);
         });
-    }
-  };
+      }
+    };
   
   //searchHandler for manage all inventory
   const searchHandler = (event) =>{
@@ -64,6 +66,7 @@ const useApi = () => {
     inventorys,
     deleteHandler,
     searchHandler,
+    isDelete
    
    
    

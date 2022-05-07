@@ -33,7 +33,7 @@ const ManageInventory = () => {
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div className="p-4">
- 55555555                 <label htmlFor="table-search" className="sr-only">
+                  <label htmlFor="table-search" className="sr-only">
                     Search
                   </label>
                   <div className="relative mt-1">
