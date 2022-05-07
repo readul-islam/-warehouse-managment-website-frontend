@@ -25,7 +25,7 @@ const AboutWarehouse = () => {
                 <div className="p-4 leading-normal md:h-[450px] md:w-[50%]">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Inventory's Details 2022</h5>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2022 so far, in reverse chronological order.</p>
-                    <div className='grid md:grid-cols-2 gap-4 md:gap-16 mt-4 md:mt-20'>
+                    <div className='grid md:grid-cols-2 gap-4 md:gap-16 mt-4'>
                         <div className='flex items-center font-semibold'>
                             <span className='text-6xl mx-3 text-[#0A66C2]'><FaCar/></span>
                             <span>

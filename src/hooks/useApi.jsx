@@ -27,38 +27,35 @@ const useApi = () => {
               const collection = inventorys.filter(
                 (inventory) => inventory.id !== id
               );
-              inventorys(collection);
+              setInventorys(collection);
               
             }
           } catch (err) {
-              console.log(err)
+            console.log(err)
           }
+          setIsReload(!isReload);
         });
     }
-    setIsReload(!isReload);
   };
   
   //searchHandler for manage all inventory
   const searchHandler = (event) =>{
    
     const searchValue = event.target.value
-    if (event.key === "Enter" && searchValue){
-     
+    // if (event.key ={== "Enter" && searchValue){
+     if(searchValue){
        fetch(`http://localhost:5000/search?title=${searchValue}`)
       .then(res => res.json())
       .then(data => {
       
           
           setInventorys(data)
-          setIsReload(!isReload)
-      
-
-       
       })
-    }
+      }
     
-  
+    
   }
+// }
   
 
 

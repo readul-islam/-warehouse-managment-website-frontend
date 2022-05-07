@@ -10,12 +10,12 @@ const Pricing = () => {
                 <h2 className="text-[#252020] text-center text-3xl md:text-4xl lg:text-5xl font-bold">Our Pricing</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 py-4 md:gap-10 md:py-10  md:px-12 lg:py-12 lg:px-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 py-4 md:gap-10 md:py-10  md:px-12 lg:px-8">
 
 
 
 
-                <div className="border md:hover:scale-105 lg:hover:scale-105 duration-500 border-sky-700 rounded-2xl shadow-2xl w-[90%] sm:w-[80%] md:w-[300px] lg:w-[280px] bg-white dark:bg-gray-800 p-4">
+                <div className="border md:hover:scale-105 lg:hover:scale-105 duration-500 border-sky-700 rounded-2xl shadow-2xl w-[90%] sm:w-[80%] md:w-[300px] lg:w-[300px] xl:w-[400px] bg-white dark:bg-gray-800 p-4">
                     <p className="text-gray-800 dark:text-gray-50 text-xl font-medium mb-4">
                         Entreprise
                     </p>
@@ -86,7 +86,7 @@ const Pricing = () => {
 
 
                 
-                <div className="border md:hover:scale-105 lg:hover:scale-105 duration-500 border-sky-700 rounded-2xl shadow-2xl w-[90%] sm:w-[80%] md:w-[300px] lg:w-[280px] bg-indigo-500 dark:bg-gray-800 p-4">
+                <div className="border md:hover:scale-105 lg:hover:scale-105 duration-500 border-sky-700 rounded-2xl shadow-2xl w-[90%] sm:w-[80%] md:w-[300px] lg:w-[300px] xl:w-[400px] bg-indigo-500 dark:bg-gray-800 p-4">
                     <div className="flex text-white  items-center justify-between">
                         <p className="text-4xl font-medium mb-4">
                             Pro
@@ -158,7 +158,7 @@ const Pricing = () => {
                 </div>
 
 
-                <div className="border md:hover:scale-105 lg:hover:scale-105 duration-500 border-sky-700 rounded-2xl shadow-2xl w-[90%] sm:w-[80%] md:w-[300px] lg:w-[280px] bg-white dark:bg-gray-800 p-4">
+                <div className="border md:hover:scale-105 lg:hover:scale-105 duration-500 border-sky-700 rounded-2xl shadow-2xl w-[90%] sm:w-[80%] md:w-[300px] lg:w-[300px] xl:w-[400px] bg-white dark:bg-gray-800 p-4">
                     <p className="text-gray-800 dark:text-gray-50 text-xl font-medium mb-4">
                         Entreprise
                     </p>

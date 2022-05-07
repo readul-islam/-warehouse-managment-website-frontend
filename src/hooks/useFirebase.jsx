@@ -16,12 +16,12 @@ const useFirebase = () => {
   const [token, setToken] = useState('')
 
   const [user] = useAuthState(auth);
-  const [createUserWithEmailAndPassword, newUser, newUserLoading] =
+  const [createUserWithEmailAndPassword, newUser, newUserLoading,newUserError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  const [signInWithEmailAndPassword, loginUser, loginLoding, signInError] =
+  const [signInWithEmailAndPassword, loginUser, loginLoding, loginError] =
 useSignInWithEmailAndPassword(auth);
-  const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser,googleLoading,googleError] = useSignInWithGoogle(auth);
   
 
   const [userInfo, setUserInfo] = useState({
@@ -47,48 +47,67 @@ useSignInWithEmailAndPassword(auth);
       })
        .then((res) => res.json())
      .then((data) => {
-          const token = data.token;
+          const accessToken = data.token;
+          setToken(accessToken)
          
           localStorage.setItem("AccessToken", token);
         });
     }
   };
   jwtToken();
+ 
+  if(loginUser){
+
+    toast.success('Login success',{id:1})
+  }
   if(loginLoding){
 
-    return <>
-     <p className="text-4xl">Loading.....</p>
-    </>
+    return <p className="text-4xl">Loading.....</p>
+   
+  }
+  if (loginError) {
+    toast.error("We cannot find an account with that email address", {
+      id: 1,
+    });
   }
  
  
   if (newUserLoading) {
-    <p>loadin...</p>;
+    return <p className="text-4xl pt-28">Loading.....</p>;
   }
+  if(newUserError){
+    toast.error('your information error',{id:1})
+   }
+  if(googleUser){
+    toast.success('Login success',{id:1})
+  }
+  if(googleError){
+    toast.error('User Action Error',{id:1})
+  }
+ 
+
 
   //create a new user with email & password
   const createNewUser = (event) => {
     event.preventDefault();
     createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     
-      
-      if(token){
-        navigate("/home");
-      }
+      navigate("/home");
+    
+      toast.success('Register successfully',{id:1})
+   
+  
     
   };
 
   const logInUser = (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(userInfo.email, userInfo.password);
-    if (signInError) {
-      toast.error("We cannot find an account with that email address", {
-        id: 1,
-      });
-    }
+    
   };
   const signInGoogle = () => {
     signInWithGoogle();
+   
   };
 
   //get all input filed value

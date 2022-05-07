@@ -147,12 +147,20 @@ const Navber = () => {
                   Home
                 </Link>
               </li>
-              <li>
+            { currentuser ? <> <li>
                 <Link to='/manage-inventory'
                   
                   className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0  md:hover:text-red-400 md:div-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
-                 Inventory
+                 Manage Item
+                </Link>
+              </li>
+              <li>
+                <Link to='/add-inventory'
+                 
+                  className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0  md:hover:text-red-400 md:div-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >
+                 Add Item
                 </Link>
               </li>
               <li>
@@ -160,24 +168,27 @@ const Navber = () => {
                  
                   className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0  md:hover:text-red-400 md:div-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
-                 My items
+                 My Items
+                </Link>
+              </li></>
+              : ''}
+              <li>
+              <Link
+                 to='/blogs'
+                  className={`block py-2 pr-4 pl-3 text-white bg-blue-700 rounded bg-transparent  hover:text-red-400 md:div-0 dark:text-white`}
+                  aria-current="page"
+                >
+                  Blogs
                 </Link>
               </li>
               <li>
-                <div
-               
-                  className="block py-2 pr-4 pl-3 text-white-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-400 cursor-pointer md:div-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <Link
+                 to='/blogs'
+                  className={`block py-2 pr-4 pl-3 text-white bg-blue-700 rounded bg-transparent  hover:text-red-400 md:div-0 dark:text-white`}
+                  aria-current="page"
                 >
-                  Pricing
-                </div>
-              </li>
-              <li>
-                <div
-                 
-                  className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0  md:hover:text-red-400 cursor-pointer md:div-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  Contact
-                </div>
+                 Contact Us
+                </Link>
               </li>
             </ul>
           </div>

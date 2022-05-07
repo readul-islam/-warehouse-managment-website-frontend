@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom";
 
 
 const InventoryDetails = () => {
+  const init = 0;
   const [selected , setSelected] = useState({})
   const [quan , setQuan] = useState(0)
   const [isLoading , setIsLoading] = useState(false)
@@ -20,14 +21,10 @@ const InventoryDetails = () => {
     .then(res => res.json())
     .then(data => {
       setSelected(data)
-     
-     
-      
     })
-
-
-  },[id,isLoading])
-  const updateQuan = (add, deleted) => {
+},[id,isLoading])
+  
+const updateQuan = (add, deleted) => {
     fetch(`http://localhost:5000/add-inventory/${id}?add=${add}&deleted=${deleted}`,{
       method: 'PUT',
      
@@ -44,19 +41,24 @@ const InventoryDetails = () => {
     const quan =  event.target.value;
     if(quan){
       setQuan(quan )
+     
     }
    
    
   }
+
+//conceptul session asking
   const addQuantity = ()=>{
-    updateQuan(quan,0)
+
+
+    updateQuan(quan,init)
     setIsLoading(!isLoading)
   
   }
   
   
   const deleteQuantity = ()=>{
-    updateQuan(0,quan)
+    updateQuan(init,1)
     setIsLoading(!isLoading)
   }
   
@@ -99,16 +101,22 @@ const InventoryDetails = () => {
           </div>
         </div>
         <div className="  col-span-3 bg-[#F4F7FC]">
-        <div className=" px-8  mt-8 w-full h-[88vh]">
+        <div className=" px-8  mt-8 w-full h-[87vh] ">
 
 
-        <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-          <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={selected.banner} alt=""/>
-          <div className="flex flex-col justify-between p-4 leading-normal">
-              <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{selected.title}</div>
-              <div>quantity: {selected.quantity}</div>
-              <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">{selected.description}</div>
+        <div className="flex flex-col w-full items-center  bg-white rounded-lg border shadow-md md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+          <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={selected?.banner} alt=""/>
+          <div className="ml-2">
+              <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{selected?.title}</div>
+              <div className="italic">suplierName:</div>
+              <div  className='font-semibold text-sm mt-'>Id:{selected._id}</div>
+              <div>quantity: {selected?.quantity}</div>
+              <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">description: {selected?.description}</div>
+              <div className='font-semibold'>
+            Price: $
           </div>
+          </div>
+         
         </div>
 
 
