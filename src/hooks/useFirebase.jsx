@@ -4,6 +4,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -15,6 +16,9 @@ import { GridLoader } from "react-spinners";
 const useFirebase = () => {
   let navigate = useNavigate();
   const [token, setToken] = useState('')
+  const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
+    auth
+  );
 
   const [user,userLoading] = useAuthState(auth);
   const [createUserWithEmailAndPassword, newUser, newUserLoading,newUserError] =
@@ -156,6 +160,24 @@ useSignInWithEmailAndPassword(auth);
       setErrors({ ...errors, repeatPasswordError: "password didn't match" });
     }
   };
+  const resetPassword = async(event) =>{
+ event.preventDefault();
+const email = (event.target.email.value)
+if(email){
+
+  await sendPasswordResetEmail(email)
+  toast('sending email...',
+  {
+   style: {
+      borderRadius: '10px',
+    },
+  },
+  );
+}else{
+  toast.error('please enter your email')
+}
+
+  }
 
   return {
     getEmail,
@@ -165,6 +187,7 @@ useSignInWithEmailAndPassword(auth);
     logInUser,
     signInGoogle,
     errors,
+    resetPassword
   };
 };
 

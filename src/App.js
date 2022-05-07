@@ -1,6 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import Blogs from "./components/Blogs/Blogs";
+import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 
 
 import Home from "./components/Home/Home";
@@ -33,6 +34,7 @@ function App() {
        <Route path='/add-inventory' element={<AddInventory/>}></Route>
        <Route path='/my-items' element={<MyItems/>}></Route>
        <Route path='/blogs' element={<Blogs/>}></Route>
+       <Route path='/reset-password' element={<ForgetPassword/>}></Route>
        <Route path='*' element={<NotFound/>}></Route>
      </Routes>
      <Toaster />
