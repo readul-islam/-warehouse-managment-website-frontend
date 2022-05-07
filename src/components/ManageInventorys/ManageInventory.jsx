@@ -16,14 +16,14 @@ const ManageInventory = () => {
               className="flex items-center space-x-2"
             >
               <img className="w-5" src={user} alt="" />
-              <p>Manage Inventory</p>
+              <div>Manage Inventory</div>
             </Link>
             <Link
               to="/add-inventory"
               className="flex items-center space-x-2 mt-7"
             >
               <img className="w-5" src={plus} alt="" />
-              <p>Add New Items</p>
+              <div>Add New Items</div>
             </Link>
           </div>
         </div>

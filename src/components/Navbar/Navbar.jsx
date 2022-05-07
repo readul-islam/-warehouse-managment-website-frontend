@@ -12,6 +12,7 @@ const Navber = () => {
   const [user, setUser] = useState(false);
   const [currentuser] = useAuthState(auth);
   
+  
 
 
   return (
@@ -55,7 +56,7 @@ const Navber = () => {
             >
               <div className="py-3 px-4">
                 <span className="block text-sm text-gray-900 dark:text-white">
-                 {currentuser?.displayname ? currentuser.displayname : 'Name Unavailable'}
+                 {currentuser?.displayName ? currentuser.displayName : 'Name Unavailable'}
                 </span>
                 <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
                 {currentuser?.email ? currentuser.email : 'Email Unavailable'}

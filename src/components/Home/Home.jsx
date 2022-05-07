@@ -41,8 +41,8 @@ const Home = () => {
 
         <div className=" bg-black/50  w-full md:px-20 lg:px-32 ">
           <div className=" text-white flex flex-col justify-center  items-center">
-            <p className="mt-1">120+ Brands And Vehicle Types. </p>
-            <p>Lets Find You A Car.</p>
+            <div className="mt-1">120+ Brands And Vehicle Types. </div>
+            <div>Lets Find You A Car.</div>
           </div>
           <div className=" flex  items-center justify-center w-full ">
             <input

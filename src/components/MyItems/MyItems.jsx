@@ -60,7 +60,7 @@ const MyItems = () => {
   if(error){
     return <p>error</p>
   }
-  console.log(myItems)
+ 
   return <>
 {user.emailVerified ?
 <div className="grid grid-cols-3 gap-8 pl-20 py-10">
@@ -68,7 +68,7 @@ const MyItems = () => {
 </div>
 :
 <div className="text-center pt-10 ">
-  <h1>Please Verify your email : <a className="underline text-blue-700"href="https://mail.google.com/" target='_blank'>Verify Now!</a> </h1>
+  <div>Please Verify your email : <a className="underline text-blue-700"href="https://mail.google.com/" target='_blank'>Verify Now!</a> </div>
 </div>}
     </>
 };
