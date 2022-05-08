@@ -59,7 +59,7 @@ useSignInWithEmailAndPassword(auth);
        .then((res) => res.json())
      .then((data) => {
           const accessToken = data.token;
-          console.log(data)
+        
           
           localStorage.setItem("AccessToken", accessToken);
           setToken(accessToken)

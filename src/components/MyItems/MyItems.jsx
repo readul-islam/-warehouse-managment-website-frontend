@@ -33,8 +33,9 @@ const MyItems = () => {
           }
           catch(err) {
             if(err.response.status === 403 || 401){
+              console.log(error)
 
-            toast.error (err.response.data.message,{id:1});
+            toast.error (err?.response?.data?.message,{id:1});
             }
           }
         
