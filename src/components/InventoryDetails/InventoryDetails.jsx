@@ -67,8 +67,8 @@ const updateQuan = (add, deleted) => {
   return (
    <>
    <div className="w-screen ">
-      <div className="w-full grid grid-cols-4 lg:px-24 ">
-        <div>
+      <div className="w-full xl:grid grid-cols-4  xl:px-24 ">
+        <div className="md:py-4 md:px-4 px-3">
           <form  onSubmit={addQuantity} className="flex flex-col font-semibold  mt-8">
             <div
              
@@ -102,10 +102,10 @@ const updateQuan = (add, deleted) => {
           </form>
         </div>
         <div className="  col-span-3 bg-[#F4F7FC]">
-        <div className=" px-8  mt-8 w-full h-[87vh] ">
+        <div className=" xl:px-8 px-2 md:px-2 xl:mt-8 xl:py-8 py-10  w-full h-[87vh] ">
 
 
-        <div className="flex flex-col w-full items-center  bg-white rounded-lg border shadow-md md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col py-4 w-full  items-center  bg-white rounded-lg  shadow-md md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
           <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={selected?.banner} alt=""/>
           <div className="ml-2">
               <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{selected?.title}</div>
@@ -114,19 +114,21 @@ const updateQuan = (add, deleted) => {
               <div>quantity: {selected.quantity}</div>
               <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">description: {selected?.description}</div>
               <div className='font-semibold'>
-            Price: $
+            Price: ${selected.price}
           </div>
           </div>
          
         </div>
 
 
-            <Link to='/manage-inventory'
+          <div className="w-full flex md:justify-end justify-center xl:pr-0 md:pr-3">
+          <Link to='/manage-inventory'
               type="submit"
-              className="bg-blue-700 py-2  px-8 absolute right-28 text-white mt-4 rounded hover:bg-blue-800 "
+              className="bg-blue-700 py-2  px-6  text-white mt-4 rounded hover:bg-blue-800 "
             >
          Manage inventory
             </Link>
+          </div>
             </div>
           
         </div>
