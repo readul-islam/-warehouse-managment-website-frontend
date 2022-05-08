@@ -20,7 +20,7 @@ const InventoryDetails = () => {
  
   useEffect(() => {
 
-    fetch(`http://localhost:5000/add-inventory/${id}`)
+    fetch(`https://evening-basin-25191.herokuapp.com/add-inventory/${id}`)
     .then(res => res.json())
     .then(data => {
       setSelected(data)
@@ -30,7 +30,7 @@ const InventoryDetails = () => {
 const updateQuan = (add, deleted) => {
   
 
-    fetch(`http://localhost:5000/add-inventory/${id}?add=${add}&deleted=${deleted}`,{
+    fetch(`https://evening-basin-25191.herokuapp.com/add-inventory/${id}?add=${add}&deleted=${deleted}`,{
       method: 'PUT',
      
     })

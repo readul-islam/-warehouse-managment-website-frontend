@@ -8,7 +8,7 @@ const useApi = () => {
   const [inventorys, setInventorys] = useState([]);
     //load all product from server
   useEffect(() => {
-    fetch("http://localhost:5000/add-inventory")
+    fetch("https://evening-basin-25191.herokuapp.com/add-inventory")
       .then((res) => res.json())
       .then((data) => setInventorys(data));
   }, [isReload]);
@@ -17,7 +17,7 @@ const useApi = () => {
   const deleteHandler = (id) => {
     const agree = window.confirm("Une nouvelle fenêtre va s'ouvrir.");
     if (agree) {
-      fetch(`http://localhost:5000/manage-inventory/${id}`, {
+      fetch(`https://evening-basin-25191.herokuapp.com/manage-inventory/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -46,7 +46,7 @@ const useApi = () => {
     const searchValue = event.target.value
     // if (event.key ={== "Enter" && searchValue){
      if(searchValue){
-       fetch(`http://localhost:5000/search?title=${searchValue}`)
+       fetch(`https://evening-basin-25191.herokuapp.com/search?title=${searchValue}`)
       .then(res => res.json())
       .then(data => {
       

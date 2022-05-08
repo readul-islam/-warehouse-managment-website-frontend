@@ -20,7 +20,7 @@ const userInventory = {title,supliername, description, price, email, banner};
 
 
 
-  fetch('http://localhost:5000/add-inventory',{
+  fetch('https://evening-basin-25191.herokuapp.com/add-inventory',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

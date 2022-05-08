@@ -19,7 +19,7 @@ const MyItems = () => {
        
      if(user){
         const { data } = await axios.get(
-            `http://localhost:5000/my-items?email=${user?.email}`,
+            `https://evening-basin-25191.herokuapp.com/my-items?email=${user?.email}`,
             {
               headers: {
                 authorization: `Bearer ${localStorage.getItem("AccessToken")}`,
@@ -36,7 +36,7 @@ const MyItems = () => {
   const deleteHandler = (id) => {
     const agree = window.confirm("are you sure? delete this item");
     if (agree) {
-      fetch(`http://localhost:5000/manage-inventory/${id}`, {
+      fetch(`https://evening-basin-25191.herokuapp.com/manage-inventory/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
