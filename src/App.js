@@ -22,33 +22,35 @@ import RequireAuth from "./components/RequireAuth/RequireAuth"
 function App() {
   return (
     <>
-     <Navbar/>
-     
-     
-     <Routes>
-       <Route path='/' element={<Home/>}></Route>
-       <Route path='/home' element={<Home/>}></Route>
-       <Route path='/login' element={<Login/>}></Route>
-       <Route path='/register' element={<Register/>}></Route>
-       <Route path='/inventory/:id' element={<RequireAuth>
-        <InventoryDetails/>
-       </RequireAuth>}></Route>
-       <Route path='/manage-inventory' element={<RequireAuth>
-         <ManageInventory/>
-       </RequireAuth>}></Route>
-       <Route path='/add-inventory' element={<RequireAuth>
-        <AddInventory/>
-       </RequireAuth>}></Route>
-       <Route path='/my-items' element={<RequireAuth>
-        <MyItems/>
-       </RequireAuth>}></Route>
-       <Route path='/contact' element={<ContactUs/>}></Route>
-       <Route path='/blogs' element={<Blogs/>}></Route>
-       <Route path='/reset-password' element={<ForgetPassword/>}></Route>
-       <Route path='*' element={<NotFound/>}></Route>
-     </Routes>
-     <Toaster />
-     
+      <Navbar />
+
+
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/home' element={<Home />}></Route>
+
+        <Route path='/add-inventory' element={<RequireAuth>
+          <AddInventory />
+        </RequireAuth>}></Route>
+        <Route path='/inventory/:id' element={<RequireAuth>
+          <InventoryDetails />
+        </RequireAuth>}></Route>
+        <Route path='/manage-inventory' element={<RequireAuth>
+          <ManageInventory />
+        </RequireAuth>}></Route>
+
+        <Route path='/my-items' element={<RequireAuth>
+          <MyItems />
+        </RequireAuth>}></Route>
+        <Route path='/contact' element={<ContactUs />}></Route>
+        <Route path='/blogs' element={<Blogs />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
+        <Route path='/reset-password' element={<ForgetPassword />}></Route>
+        <Route path='*' element={<NotFound />}></Route>
+      </Routes>
+      <Toaster />
+
     </>
   );
 }
