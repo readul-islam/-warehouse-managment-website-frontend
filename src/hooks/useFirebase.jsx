@@ -41,7 +41,7 @@ useSignInWithEmailAndPassword(auth);
     passwordError: "",
     repeatPasswordError: "",
   });
-// get all itmes securly
+
   const jwtToken =() => {
     if(userLoading){
        return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/>
@@ -67,23 +67,15 @@ useSignInWithEmailAndPassword(auth);
     }
   };
   jwtToken();
-  if(loginUser){
+  if(loginUser || googleUser){
     toast.success('Login successfully',{id: 1})
   }
-  
-  if(googleUser){
-    toast.success('Login successfully',{id:1})
-  }
- 
-  if(newUserLoading){
+if(googleLoading || loginLoding || newUserLoading){
     return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/></div>
   }
-  if(loginLoding){
-    return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/></div>
-  }
-  if(googleLoading){
-    return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/></div>
-  }
+if(googleError || loginError || newUserError){
+  toast.error('Something Wrong',{id:1})
+}
 
 
   //create a new user with email & password
@@ -91,13 +83,15 @@ useSignInWithEmailAndPassword(auth);
     event.preventDefault();
     if(userInfo.password === userInfo.repeatPassword && userInfo.email && userInfo.password && userInfo.repeatPassword){
      
-    await  createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+    try{
+      await  createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     
       toast.success('Register successfully',{id:1})
       await  signOut(auth)
       navigate("/login");
-     
-    
+    }catch(err){
+      toast.error(err.message,{id:1})
+    }
     }else{
       toast.error('worng information',{id:1})
     }
@@ -185,7 +179,9 @@ if(email){
   toast.error('please enter your email',{id:1})
  }
 
-
+ if(error){
+   toast.error('Not found email ')
+ }
   }
 
   return {
