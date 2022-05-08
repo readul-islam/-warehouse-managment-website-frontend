@@ -63,7 +63,7 @@ const MyItems = () => {
  
   return <>
 {user.emailVerified ?
-<div className="grid grid-cols-3 gap-8 pl-20 py-10">
+<div className="grid xl:grid-cols-3  xl:pl-20 md:grid-cols-2 md:px-2 gap-4 grid-cols-1   px-3">
  {myItems.map(item => <Item key={item._id } deleteHandler={deleteHandler} item={item} />)}
 </div>
 :

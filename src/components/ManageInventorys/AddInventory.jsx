@@ -13,7 +13,8 @@ const description =event.target.description.value;
 const price =event.target.price.value;
 const email =event.target.email.value;
 const banner =event.target.banner.value;
-const userInventory = {title, description, price, email, banner};
+const supliername = event.target.supliername.value;
+const userInventory = {title,supliername, description, price, email, banner};
 
 
 
