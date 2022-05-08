@@ -90,13 +90,13 @@ const updateQuan = (add, deleted) => {
             Add quantity
             </button>
             
-            <button
+            <p
             onClick={deleteQuantity}
               
-              className="text-white  bg-blue-700 hover:bg-blue-800  font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-white cursor-pointer  bg-blue-700 hover:bg-blue-800  font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
              Delivered
-            </button>
+            </p>
            
             </div>
           </form>
