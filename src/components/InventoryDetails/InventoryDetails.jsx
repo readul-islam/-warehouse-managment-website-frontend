@@ -53,6 +53,9 @@ const updateQuan = (add, deleted) => {
     if(addValue){
      console.log(addValue)
  updateQuan(addValue,init)
+ toast.success(' add successfully',{id: 1})
+   }else{
+     toast.error('add value empty',{id:1})
    }
    event.target.reset()
    }
