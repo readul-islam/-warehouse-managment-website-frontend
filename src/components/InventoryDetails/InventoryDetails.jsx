@@ -54,7 +54,7 @@ const updateQuan = (add, deleted) => {
      console.log(addValue)
  updateQuan(addValue,init)
    }
-   
+   event.target.reset()
    }
   
   
