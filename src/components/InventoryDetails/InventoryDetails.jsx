@@ -109,8 +109,8 @@ const updateQuan = (add, deleted) => {
           <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={selected?.banner} alt=""/>
           <div className="ml-2">
               <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{selected?.title}</div>
-              <div className="italic">suplierName:</div>
-              <div  className='font-semibold text-sm mt-'>Id:{selected._id}</div>
+              <div className="italic">suplierName: {selected.supliername}</div>
+              <div  className='font-semibold text-sm mt-'>Id: {selected._id}</div>
               <div>quantity: {selected.quantity}</div>
               <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">description: {selected?.description}</div>
               <div className='font-semibold'>

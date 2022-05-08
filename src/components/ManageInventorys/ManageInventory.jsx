@@ -110,7 +110,7 @@ const ManageInventory = () => {
                           {inventory.title.slice(0, 20)}
                         </th>
                         <td className="px-6 py-4">Sliver</td>
-                        <td className="px-6 py-4">Laptop</td>
+                        <td className="px-6 py-4">Car</td>
                         <td className="px-6 py-4">${inventory.price}</td>
                         <td className="px-6 py-4 text-right">
                           <p

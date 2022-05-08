@@ -1,9 +1,9 @@
-import { ClipLoader, BarLoader, BeatLoader, BounceLoader, CircleLoader, ClimbingBoxLoader, HashLoader, GridLoader } from "react-spinners";
+import {GridLoader } from "react-spinners";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-// import useApi from "../../hooks/useApi";
+
 import Item from "./Item";
 
 const MyItems = () => {
@@ -11,7 +11,7 @@ const MyItems = () => {
   const [myItems, setMyItems] = useState([]);
   const [isReload,setIsReload] = useState(false);
   
-  // console.log(user.emailVerified);
+  
   
  
   useEffect(() => {
@@ -26,6 +26,7 @@ const MyItems = () => {
               },
             }
           );
+          
           setMyItems(data);
      }
     
