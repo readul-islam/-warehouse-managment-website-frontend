@@ -1,8 +1,9 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import ClipLoader from "react-spinners/ClipLoader";
+
 import {
   useAuthState,
+  
   useCreateUserWithEmailAndPassword,
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
@@ -11,6 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import { GridLoader } from "react-spinners";
+import { signOut } from "firebase/auth";
 
 
 const useFirebase = () => {
@@ -68,9 +70,7 @@ useSignInWithEmailAndPassword(auth);
   if(loginUser){
     toast.success('Login successfully',{id: 1})
   }
-  if(newUser){
-    toast.success('Register successfully',{id:1})
-  }
+  
   if(googleUser){
     toast.success('Login successfully',{id:1})
   }
@@ -87,15 +87,17 @@ useSignInWithEmailAndPassword(auth);
 
 
   //create a new user with email & password
-  const createNewUser = (event) => {
+  const createNewUser = async(event) => {
     event.preventDefault();
-    if(userInfo.password === userInfo.repeatPassword){
+    if(userInfo.password === userInfo.repeatPassword && userInfo.email && userInfo.password && userInfo.repeatPassword){
      
-      createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-    
-      navigate("/login");
+    await  createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     
       toast.success('Register successfully',{id:1})
+      await  signOut(auth)
+      navigate("/login");
+     
+    
     }else{
       toast.error('worng information',{id:1})
     }
@@ -104,16 +106,16 @@ useSignInWithEmailAndPassword(auth);
     
   };
 
-  const logInUser = (event) => {
+  const logInUser =async(event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(userInfo.email, userInfo.password);
+   await signInWithEmailAndPassword(userInfo.email, userInfo.password);
     if(token){
       navigate("/home")
     }
     
   };
-  const signInGoogle = () => {
-    signInWithGoogle();
+  const signInGoogle =async () => {
+ await   signInWithGoogle();
     if(token){
       navigate("/home")
     }

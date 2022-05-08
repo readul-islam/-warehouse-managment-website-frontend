@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
 import Item from "./Item";
+import toast from "react-hot-toast";
 
 const MyItems = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -18,16 +19,25 @@ const MyItems = () => {
     const getData = async () => {
        
      if(user){
-        const { data } = await axios.get(
-            `https://evening-basin-25191.herokuapp.com/my-items?email=${user?.email}`,
-            {
-              headers: {
-                authorization: `Bearer ${localStorage.getItem("AccessToken")}`,
-              },
+       
+          try {
+            const { data } = await axios.get(
+              `https://evening-basin-25191.herokuapp.com/my-items?email=${user?.email}`,
+              {
+                headers: {
+                  authorization: `Bearer ${localStorage.getItem("AccessToken")}`,
+                },
+              }
+            );
+            setMyItems(data);
+          }
+          catch(err) {
+            if(err.response.status === 403 || 401){
+
+            toast.error (err.response.data.message,{id:1});
             }
-          );
-          
-          setMyItems(data);
+          }
+        
      }
     
     };
@@ -64,7 +74,7 @@ const MyItems = () => {
  
   return <>
 {user.emailVerified ?
-<div className="grid xl:grid-cols-3  xl:pl-20 md:grid-cols-2 md:px-2 gap-4 grid-cols-1   px-3">
+<div  >
  {myItems.map(item => <Item key={item._id } deleteHandler={deleteHandler} item={item} />)}
 </div>
 :
