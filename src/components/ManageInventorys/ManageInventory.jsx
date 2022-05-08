@@ -3,11 +3,24 @@ import plus from "../../assets/img/plus 1.png";
 import "./ManageInventory.css";
 import { Link } from "react-router-dom";
 import useApi from "../../hooks/useApi";
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
+import { GridLoader } from "react-spinners";
 
 const ManageInventory = () => {
   const { inventorys, deleteHandler,searchHandler } = useApi();
+  const [user,loading,error] = useAuthState(auth);
+  if(loading){
+    return  <div className="flex justify-center pt-[35vh] ">  <GridLoader size={10}/>
+    </div>
+  }
+  if(error){
+    toast.error('something worng for user')
+  }
   return (
-    <div className="">
+   <>
+   {user.emailVerified ?  <div className="">
       <div className="w-full grid md:grid-cols-4 grid-cols-1 lg:px-24 ">
         <div>
           <div className="flex flex-col font-semibold ml-4 my-4 md:mt-8">
@@ -132,7 +145,11 @@ const ManageInventory = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div>:
+     <div className="text-center pt-10 ">
+  <div>Please Verify your email : <a className="underline text-blue-700"href="https://mail.google.com/" target='_blank'>Verify Now!</a> </div>
+</div>
+    } </>
   );
 };
 

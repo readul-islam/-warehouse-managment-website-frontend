@@ -75,7 +75,7 @@ const MyItems = () => {
  
   return <>
 {user.emailVerified ?
-<div  >
+<div className="grid xl:grid-cols-3 gap-4 xl:pl-20 md:grid-cols-2 md:px-4 px-1">
  {myItems.map(item => <Item key={item._id } deleteHandler={deleteHandler} item={item} />)}
 </div>
 :
